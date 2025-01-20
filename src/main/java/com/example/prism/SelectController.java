@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SelectController {
+    public String chosenShape;
     @FXML
     TextField heightField;
 
@@ -32,6 +33,11 @@ public class SelectController {
         triangleBtn.setGraphic(createImageView("/com/example/prism/images/triangle.png"));
         rectangleBtn.setGraphic(createImageView("/com/example/prism/images/rectangle.png"));
         circleBtn.setGraphic(createImageView("/com/example/prism/images/circle.png"));
+
+        squareBtn.setOnAction(actionEvent -> selectShape("square"));
+        triangleBtn.setOnAction(actionEvent -> selectShape("triangle"));
+        rectangleBtn.setOnAction(actionEvent -> selectShape("rectangle"));
+        circleBtn.setOnAction(actionEvent -> selectShape("circle"));
     }
 
     private ImageView createImageView(String path) {
@@ -44,15 +50,42 @@ public class SelectController {
         }
     }
 
-    public void selectShape() {
-        System.out.println("chosen figure.");
+    public void selectShape(String figure) {
+        System.out.println("chosen figure = " + figure);
+        chosenShape = figure;
     }
 
     @FXML
     protected void onNextBtnClick() throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        if (chosenShape.isEmpty()) {
+            System.out.println("Shape not chosen");
+            return;
+        }
+
+        String fxmlFile;
+
+        switch (chosenShape) {
+            case "square":
+                fxmlFile = "calculate-square-volume-view.fxml";
+                break;
+            case "triangle":
+                fxmlFile = "calculate-triangle-volume-view.fxml";
+                break;
+            case "rectangle":
+                fxmlFile = "calculate-rectangle-volume-view.fxml";
+                break;
+            case "circle":
+                fxmlFile = "calculate-circle-volume-view.fxml";
+                break;
+            default:
+                System.out.println("wrong shape");
+                return;
+        }
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Stage stage = new Stage();
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
