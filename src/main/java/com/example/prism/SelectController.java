@@ -1,5 +1,9 @@
 package com.example.prism;
 
+import com.example.prism.controllers.CalculateCircleVolumeController;
+import com.example.prism.controllers.CalculateRectangleVolumeController;
+import com.example.prism.controllers.CalculateSquareVolumeController;
+import com.example.prism.controllers.CalculateTriangleVolumeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +18,7 @@ import java.io.IOException;
 
 public class SelectController {
     public String chosenShape;
+    public double height;
     @FXML
     TextField heightField;
 
@@ -62,20 +67,31 @@ public class SelectController {
             return;
         }
 
+        if (heightField.getText().isEmpty() || Integer.parseInt(heightField.getText()) <= 0) {
+            System.out.println("Invalid height. must be greater that 0");
+            return;
+        }
+
+        height = Integer.parseInt(heightField.getText());
         String fxmlFile;
 
+        Object controller;
         switch (chosenShape) {
             case "square":
                 fxmlFile = "calculate-square-volume-view.fxml";
+                controller = new CalculateSquareVolumeController(height);
                 break;
             case "triangle":
                 fxmlFile = "calculate-triangle-volume-view.fxml";
+                controller = new CalculateTriangleVolumeController(height);
                 break;
             case "rectangle":
                 fxmlFile = "calculate-rectangle-volume-view.fxml";
+                controller = new CalculateRectangleVolumeController(height);
                 break;
             case "circle":
                 fxmlFile = "calculate-circle-volume-view.fxml";
+                controller = new CalculateCircleVolumeController(height);
                 break;
             default:
                 System.out.println("wrong shape");
@@ -83,7 +99,9 @@ public class SelectController {
         }
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+        fxmlLoader.setController(controller);
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Stage stage = new Stage();
         stage.setTitle("Hello!");
