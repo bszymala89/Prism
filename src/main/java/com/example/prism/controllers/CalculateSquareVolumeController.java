@@ -31,8 +31,9 @@ public class CalculateSquareVolumeController {
         double side = Integer.parseInt(sideField.getText());
         double area = side * side;
         double volume = area * height;
+        String volumeToDisplay = String.format("%.2f", volume);
 
-        resultLabel.setText(side + " * " + side + " * " + height + " = " + volume);
+        resultLabel.setText(side + " * " + side + " * " + height + " = " + volumeToDisplay + " cm³");
         resultLabel.setVisible(true);
     }
 }
