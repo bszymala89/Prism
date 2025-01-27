@@ -13,4 +13,6 @@
     <Label text="sideB"/>
     <TextField fx:id="sideBField"/>
     <Label text="cm."/>
+    <Button text="Calculate" onAction="#Calculate"/>
+    <Label fx:id="resultLabel" visible="false"/>
 </VBox>

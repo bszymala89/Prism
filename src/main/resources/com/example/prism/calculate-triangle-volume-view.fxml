@@ -13,4 +13,6 @@
     <Label text="base height"/>
     <TextField fx:id="baseHeightField"/>
     <Label text="cm."/>
+    <Button text="Calculate" onAction="#Calculate"/>
+    <Label fx:id="resultLabel" visible="false"/>
 </VBox>

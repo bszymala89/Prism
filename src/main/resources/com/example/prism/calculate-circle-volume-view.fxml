@@ -10,4 +10,6 @@
     <Label text="radius"/>
     <TextField fx:id="radiusField"/>
     <Label text="cm."/>
+    <Button text="Calculate" onAction="#Calculate"/>
+    <Label fx:id="resultLabel" visible="false"/>
 </VBox>
