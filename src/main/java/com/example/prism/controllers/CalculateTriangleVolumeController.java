@@ -31,8 +31,8 @@ public class CalculateTriangleVolumeController {
 
         double side = Integer.parseInt(sideField.getText());
         double baseHeight = Integer.parseInt(baseHeightField.getText());
-        double area = side * baseHeight;
-        double volume = area * height / 2;
+        double area = side * baseHeight / 2;
+        double volume = area * height;
         String volumeToDisplay = String.format("%.2f", volume);
 
         resultLabel.setText(side + " * " + baseHeight + " * " + height + " = " + volumeToDisplay + " cm³");
