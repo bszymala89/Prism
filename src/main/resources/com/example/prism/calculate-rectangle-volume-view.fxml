@@ -6,13 +6,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="sideA"/>
-    <TextField fx:id="sideAField"/>
-    <Label text="cm."/>
-    <Label text="sideB"/>
-    <TextField fx:id="sideBField"/>
-    <Label text="cm."/>
-    <Button text="Calculate" onAction="#Calculate"/>
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Label text="Rectangle Base Prism Volume" style="-fx-font-size: 20px; -fx-font-weight: bold"/>
+<GridPane hgap="20" vgap="20" style="-fx-padding: 10;" >
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <Label GridPane.rowIndex="0" GridPane.columnIndex="0" text="sideA"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="150" fx:id="sideAField"/>
+    <Label GridPane.rowIndex="0" GridPane.columnIndex="2" text="cm."/>
+
+    <Label GridPane.rowIndex="1" GridPane.columnIndex="0" text="sideB"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="150" fx:id="sideBField"/>
+    <Label GridPane.rowIndex="1" GridPane.columnIndex="2" text="cm."/>
+</GridPane>
+<Button maxWidth="150" text="Calculate" onAction="#Calculate"/>
+<HBox alignment="CENTER" spacing="5" style="-fx-font-size: 15px; -fx-font-weight: bold">
+    <Label fx:id="resultTextLabel" text="Result:"/>
     <Label fx:id="resultLabel" visible="false"/>
+</HBox>
 </VBox>

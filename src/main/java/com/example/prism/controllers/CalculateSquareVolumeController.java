@@ -9,7 +9,7 @@ public class CalculateSquareVolumeController {
     @FXML
     private TextField sideField;
     @FXML
-    private Label resultLabel, resultTextLabel;
+    private Label resultLabel;
 
     private double height;
 
@@ -35,6 +35,5 @@ public class CalculateSquareVolumeController {
 
         resultLabel.setText(side + " * " + side + " * " + height + " = " + volumeToDisplay + " cm³");
         resultLabel.setVisible(true);
-        resultTextLabel.setVisible(true);
     }
 }
