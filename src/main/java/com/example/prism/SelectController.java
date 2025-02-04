@@ -6,7 +6,6 @@ import com.example.prism.controllers.CalculateSquareVolumeController;
 import com.example.prism.controllers.CalculateTriangleVolumeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,15 +20,8 @@ public class SelectController {
     public double height;
     @FXML
     TextField heightField;
-
     @FXML
-    Button squareBtn;
-    @FXML
-    Button triangleBtn;
-    @FXML
-    Button rectangleBtn;
-    @FXML
-    Button circleBtn;
+    Button squareBtn, triangleBtn, rectangleBtn, circleBtn;
 
 
     @FXML
@@ -43,6 +35,13 @@ public class SelectController {
         triangleBtn.setOnAction(actionEvent -> selectShape("triangle"));
         rectangleBtn.setOnAction(actionEvent -> selectShape("rectangle"));
         circleBtn.setOnAction(actionEvent -> selectShape("circle"));
+
+        setButtonScaling(squareBtn);
+    }
+
+    private void setButtonScaling(Button button) {
+        button.setMaxWidth(Double.MAX_VALUE);
+        button.setMaxHeight(Double.MAX_VALUE);
     }
 
     private ImageView createImageView(String path) {
@@ -98,14 +97,17 @@ public class SelectController {
                 return;
         }
 
-
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
         fxmlLoader.setController(controller);
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+
         Stage stage = new Stage();
         stage.setTitle("Hello!");
         stage.setScene(scene);
+
+        stage.widthProperty().addListener((obs, oldValue, newValue) -> scene.getRoot().requestLayout());
+        stage.heightProperty().addListener((obs, oldValue, newValue) -> scene.getRoot().requestLayout());
+
         stage.show();
     }
 }
