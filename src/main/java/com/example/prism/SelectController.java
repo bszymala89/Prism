@@ -99,7 +99,7 @@ public class SelectController {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
         fxmlLoader.setController(controller);
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 450, 450);
 
         Stage stage = new Stage();
         stage.setTitle("Hello!");
