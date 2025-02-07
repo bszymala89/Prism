@@ -8,7 +8,7 @@ public class CalculateCircleVolumeController {
     @FXML
     private TextField radiusField;
     @FXML
-    protected Label resultLabel;
+    protected Label volumeLabel, baseAreaLabel;
 
     private double height;
 
@@ -24,11 +24,14 @@ public class CalculateCircleVolumeController {
         }
 
         double radius = Integer.parseInt(radiusField.getText());
-        double area = 3.14 * radius * 2;
-        double volume = area * height;
+        double baseArea = 3.14 * radius * 2;
+        double volume = baseArea * height;
         String volumeToDisplay = String.format("%.2f", volume);
+        String baseAreaToDisplay = String.format("%.2f", baseArea);
 
-        resultLabel.setText("3.14 * " + radius + " * 2 = " + volumeToDisplay + " cm³");
-        resultLabel.setVisible(true);
+        baseAreaLabel.setText("Base Area = 3.14 * " + radius + "² = " + baseAreaToDisplay + "cm²");
+        volumeLabel.setText("Volume = 3.14 * " + radius + "² = " + volumeToDisplay + " cm³");
+        volumeLabel.setVisible(true);
+        baseAreaLabel.setVisible(true);
     }
 }

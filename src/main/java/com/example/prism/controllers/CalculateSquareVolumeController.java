@@ -1,6 +1,5 @@
 package com.example.prism.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,7 +8,7 @@ public class CalculateSquareVolumeController {
     @FXML
     private TextField sideField;
     @FXML
-    private Label resultLabel;
+    private Label volumeLabel, baseAreaLabel;
 
     private double height;
 
@@ -29,11 +28,14 @@ public class CalculateSquareVolumeController {
         }
 
         double side = Integer.parseInt(sideField.getText());
-        double area = side * side;
-        double volume = area * height;
+        double baseArea = side * side;
+        double volume = baseArea * height;
         String volumeToDisplay = String.format("%.2f", volume);
+        String baseAreaToDisplay = String.format("%.2f", baseArea);
 
-        resultLabel.setText(side + " * " + side + " * " + height + " = " + volumeToDisplay + " cm³");
-        resultLabel.setVisible(true);
+        baseAreaLabel.setText("Base Area = " + side + " * " + side + " = " + baseAreaToDisplay + "cm² ");
+        volumeLabel.setText("Volume = " + side + " * " + side + " * " + height + " = " + volumeToDisplay + " cm³");
+        volumeLabel.setVisible(true);
+        baseAreaLabel.setVisible(true);
     }
 }
