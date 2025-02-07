@@ -10,7 +10,7 @@ public class CalculateRectangleVolumeController {
     @FXML
     private TextField sideBField;
     @FXML
-    private Label resultLabel;
+    private Label volumeLabel, baseAreaLabel;
 
     private double height;
 
@@ -31,11 +31,14 @@ public class CalculateRectangleVolumeController {
 
         double sideA = Integer.parseInt(sideAField.getText());
         double sideB = Integer.parseInt(sideBField.getText());
-        double area = sideA * sideB;
-        double volume = area * height;
+        double baseArea = sideA * sideB;
+        double volume = baseArea * height;
         String volumeToDisplay = String.format("%.2f", volume);
+        String baseAreaToDisplay = String.format("%.2f", baseArea);
 
-        resultLabel.setText(sideA + " * " + sideB + " * " + height + " = " + volumeToDisplay + " cm³");
-        resultLabel.setVisible(true);
+        baseAreaLabel.setText("Base Area = " + sideA + " * " + sideB + " = " + baseAreaToDisplay + "cm² ");
+        volumeLabel.setText("Volume = " + sideA + " * " + sideB + " * " + height + " = " + volumeToDisplay + " cm³");
+        volumeLabel.setVisible(true);
+        baseAreaLabel.setVisible(true);
     }
 }

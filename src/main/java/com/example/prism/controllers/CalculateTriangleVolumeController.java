@@ -10,7 +10,7 @@ public class CalculateTriangleVolumeController {
     @FXML
     private TextField baseHeightField;
     @FXML
-    private Label resultLabel;
+    private Label volumeLabel, baseAreaLabel;
 
     private double height;
 
@@ -31,11 +31,14 @@ public class CalculateTriangleVolumeController {
 
         double side = Integer.parseInt(sideField.getText());
         double baseHeight = Integer.parseInt(baseHeightField.getText());
-        double area = side * baseHeight / 2;
-        double volume = area * height;
+        double baseArea = side * baseHeight / 2;
+        double volume = baseArea * height;
         String volumeToDisplay = String.format("%.2f", volume);
+        String baseAreaToDisplay = String.format("%.2f", baseArea);
 
-        resultLabel.setText(side + " * " + baseHeight + " * " + height + " = " + volumeToDisplay + " cm³");
-        resultLabel.setVisible(true);
+        baseAreaLabel.setText("Base Area = " + side + " * " + baseHeight + " / 2 = " + baseAreaToDisplay + "cm² ");
+        volumeLabel.setText("Volume = " + side + " * " + baseHeight + " / 2 * " + height + " = " + volumeToDisplay + " cm³");
+        volumeLabel.setVisible(true);
+        baseAreaLabel.setVisible(true);
     }
 }
