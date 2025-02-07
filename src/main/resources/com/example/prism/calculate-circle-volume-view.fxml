@@ -14,8 +14,13 @@
     <Label text="cm."/>
 </HBox>
 <Button maxWidth="150" text="Calculate" onAction="#Calculate"/>
-<HBox alignment="CENTER" spacing="5" style="-fx-font-size: 15px; -fx-font-weight: bold">
-    <Label fx:id="resultTextLabel" text="Result:"/>
-    <Label fx:id="resultLabel" visible="false"/>
-</HBox>
+    <GridPane hgap="20" vgap="20" style="-fx-padding: 5;-fx-font-size: 15px; -fx-font-weight: bold">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        <Label GridPane.rowIndex="0" fx:id="resultTextLabel" text="Result:"/>
+        <Label GridPane.rowIndex="1" fx:id="baseAreaLabel" visible="false"/>
+        <Label GridPane.rowIndex="2" fx:id="volumeLabel" visible="false"/>
+    </GridPane>
 </VBox>
