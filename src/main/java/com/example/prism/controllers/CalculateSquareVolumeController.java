@@ -8,7 +8,7 @@ public class CalculateSquareVolumeController {
     @FXML
     private TextField sideField;
     @FXML
-    private Label volumeLabel, baseAreaLabel;
+    private Label volumeLabel, baseAreaLabel, totalPrismAreaLabel;
 
     private double height;
 
@@ -29,13 +29,20 @@ public class CalculateSquareVolumeController {
 
         double side = Integer.parseInt(sideField.getText());
         double baseArea = side * side;
+        double sideArea = side * height * 4;
+        double totalPrismArea = baseArea * 2 + sideArea;
         double volume = baseArea * height;
+
         String volumeToDisplay = String.format("%.2f", volume);
         String baseAreaToDisplay = String.format("%.2f", baseArea);
+        String totalPrismAreaToDisplay = String.format("%.2f", totalPrismArea);
 
-        baseAreaLabel.setText("Base Area = " + side + " * " + side + " = " + baseAreaToDisplay + "cm² ");
+        baseAreaLabel.setText("Base Area = " + side + " * " + side + " = " + baseAreaToDisplay + " cm² ");
+        totalPrismAreaLabel.setText("Total Prism Area = " + side + " * " + side + " * 2 + " + side + " * " + height + " * 4 = " + totalPrismAreaToDisplay + " cm²");
         volumeLabel.setText("Volume = " + side + " * " + side + " * " + height + " = " + volumeToDisplay + " cm³");
-        volumeLabel.setVisible(true);
+
         baseAreaLabel.setVisible(true);
+        totalPrismAreaLabel.setVisible(true);
+        volumeLabel.setVisible(true);
     }
 }

@@ -10,7 +10,7 @@ public class CalculateRectangleVolumeController {
     @FXML
     private TextField sideBField;
     @FXML
-    private Label volumeLabel, baseAreaLabel;
+    private Label volumeLabel, baseAreaLabel, totalPrismAreaLabel;
 
     private double height;
 
@@ -31,14 +31,24 @@ public class CalculateRectangleVolumeController {
 
         double sideA = Integer.parseInt(sideAField.getText());
         double sideB = Integer.parseInt(sideBField.getText());
+
         double baseArea = sideA * sideB;
+        double sideArea = sideA * height * 2 + sideB * height * 2;
+        double totalPrismArea = baseArea * 2 + sideArea;
+
         double volume = baseArea * height;
+
         String volumeToDisplay = String.format("%.2f", volume);
         String baseAreaToDisplay = String.format("%.2f", baseArea);
+        String totalPrismAreaToDisplay = String.format("%.2f", totalPrismArea);
 
-        baseAreaLabel.setText("Base Area = " + sideA + " * " + sideB + " = " + baseAreaToDisplay + "cm² ");
+        baseAreaLabel.setText("Base Area = " + sideA + " * " + sideB + " = " + baseAreaToDisplay + " cm² ");
+        totalPrismAreaLabel.setText("Total Prism Area = " + sideA + " * " + sideB + " * 2 + " + sideA + " * " + height +
+                " * 2 +" + sideB + " * " + height + " * 2 = " + totalPrismAreaToDisplay + " cm²");
         volumeLabel.setText("Volume = " + sideA + " * " + sideB + " * " + height + " = " + volumeToDisplay + " cm³");
-        volumeLabel.setVisible(true);
+
         baseAreaLabel.setVisible(true);
+        totalPrismAreaLabel.setVisible(true);
+        volumeLabel.setVisible(true);
     }
 }
