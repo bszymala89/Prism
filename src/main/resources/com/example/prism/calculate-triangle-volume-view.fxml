@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-<Label text="Triangle Base Prism Volume" style="-fx-font-size: 20px; -fx-font-weight: bold"/>
+<Label text="Isosceles Triangle Base Prism Volume" style="-fx-font-size: 20px; -fx-font-weight: bold"/>
     <GridPane hgap="20" vgap="20" style="-fx-padding: 10;" >
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" />
@@ -26,6 +26,8 @@
         </columnConstraints>
         <Label GridPane.rowIndex="0" fx:id="resultTextLabel" text="Result:"/>
         <Label GridPane.rowIndex="1" fx:id="baseAreaLabel" visible="false"/>
-        <Label GridPane.rowIndex="2" fx:id="volumeLabel" visible="false"/>
+        <Label GridPane.rowIndex="2" fx:id="totalPrismAreaLabel" visible="false"/>
+        <Label GridPane.rowIndex="3" fx:id="volumeLabel" visible="false"/>
+        <Label GridPane.rowIndex="4" fx:id="triangleArmLabel" visible="false"/>
     </GridPane>
 </VBox>
