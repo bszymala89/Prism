@@ -29,6 +29,7 @@
         </columnConstraints>
         <Label GridPane.rowIndex="0" fx:id="resultTextLabel" text="Result:"/>
         <Label GridPane.rowIndex="1" fx:id="baseAreaLabel" visible="false"/>
-        <Label GridPane.rowIndex="2" fx:id="volumeLabel" visible="false"/>
+        <Label GridPane.rowIndex="2" fx:id="totalPrismAreaLabel" visible="false"/>
+        <Label GridPane.rowIndex="3" fx:id="volumeLabel" visible="false"/>
     </GridPane>
 </VBox>
