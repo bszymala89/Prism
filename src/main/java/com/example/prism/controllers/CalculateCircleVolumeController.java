@@ -18,12 +18,13 @@ public class CalculateCircleVolumeController {
 
     @FXML
     protected void Calculate() {
-        if (radiusField.getText().isEmpty() || Integer.parseInt(radiusField.getText()) <= 0) {
+        if (radiusField.getText().isEmpty() || Double.parseDouble(radiusField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
 
-        double radius = Integer.parseInt(radiusField.getText());
+
+        double radius = Double.parseDouble(radiusField.getText().replace(",", "."));
 
         double baseArea = 3.14 * radius * radius;
         double sideArea = 3.14 * radius * 2;

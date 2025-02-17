@@ -66,12 +66,12 @@ public class SelectController {
             return;
         }
 
-        if (heightField.getText().isEmpty() || Integer.parseInt(heightField.getText()) <= 0) {
+        if (heightField.getText().isEmpty() || Double.parseDouble(heightField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid height. must be greater that 0");
             return;
         }
 
-        height = Integer.parseInt(heightField.getText());
+        height = Double.parseDouble(heightField.getText().replace(",", "."));
         String fxmlFile;
 
         Object controller;

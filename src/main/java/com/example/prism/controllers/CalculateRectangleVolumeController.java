@@ -20,17 +20,17 @@ public class CalculateRectangleVolumeController {
 
     @FXML
     protected void Calculate() {
-        if (sideAField.getText().isEmpty() || Integer.parseInt(sideAField.getText()) <= 0) {
+        if (sideAField.getText().isEmpty() || Double.parseDouble(sideAField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
-        if (sideBField.getText().isEmpty() || Integer.parseInt(sideBField.getText()) <= 0) {
+        if (sideBField.getText().isEmpty() || Double.parseDouble(sideBField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
 
-        double sideA = Integer.parseInt(sideAField.getText());
-        double sideB = Integer.parseInt(sideBField.getText());
+        double sideA = Double.parseDouble(sideAField.getText().replace(",", "."));
+        double sideB = Double.parseDouble(sideBField.getText().replace(",", "."));
 
         double baseArea = sideA * sideB;
         double sideArea = sideA * height * 2 + sideB * height * 2;

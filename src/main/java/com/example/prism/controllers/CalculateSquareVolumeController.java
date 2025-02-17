@@ -22,12 +22,12 @@ public class CalculateSquareVolumeController {
 
     @FXML
     protected void Calculate() {
-        if (sideField.getText().isEmpty() || Integer.parseInt(sideField.getText()) <= 0) {
+        if (sideField.getText().isEmpty() || Double.parseDouble(sideField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
 
-        double side = Integer.parseInt(sideField.getText());
+        double side = Double.parseDouble(sideField.getText().replace(",", "."));
         double baseArea = side * side;
         double sideArea = side * height * 4;
         double totalPrismArea = baseArea * 2 + sideArea;

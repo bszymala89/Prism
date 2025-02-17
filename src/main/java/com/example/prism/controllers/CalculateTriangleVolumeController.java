@@ -20,17 +20,17 @@ public class CalculateTriangleVolumeController {
 
     @FXML
     protected void Calculate() {
-        if (sideField.getText().isEmpty() || Integer.parseInt(sideField.getText()) <= 0) {
+        if (sideField.getText().isEmpty() || Double.parseDouble(sideField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
-        if (baseHeightField.getText().isEmpty() || Integer.parseInt(baseHeightField.getText()) <= 0) {
+        if (baseHeightField.getText().isEmpty() || Double.parseDouble(baseHeightField.getText().replace(",", ".")) <= 0) {
             System.out.println("Invalid height value. must be greater than 0");
             return;
         }
 
-        double side = Integer.parseInt(sideField.getText());
-        double baseHeight = Integer.parseInt(baseHeightField.getText());
+        double side = Double.parseDouble(sideField.getText().replace(",", "."));
+        double baseHeight = Double.parseDouble(baseHeightField.getText().replace(",", "."));
         double baseArea = side * baseHeight / 2;
 
         double halfBase = side / 2;
