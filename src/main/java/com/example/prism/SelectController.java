@@ -18,6 +18,7 @@ import java.io.IOException;
 public class SelectController {
     public String chosenShape;
     public double height;
+    private Button activeShapeButton = null;
     @FXML
     TextField heightField;
     @FXML
@@ -31,10 +32,10 @@ public class SelectController {
         rectangleBtn.setGraphic(createImageView("/com/example/prism/images/rectangle.png"));
         circleBtn.setGraphic(createImageView("/com/example/prism/images/circle.png"));
 
-        squareBtn.setOnAction(actionEvent -> selectShape("square"));
-        triangleBtn.setOnAction(actionEvent -> selectShape("triangle"));
-        rectangleBtn.setOnAction(actionEvent -> selectShape("rectangle"));
-        circleBtn.setOnAction(actionEvent -> selectShape("circle"));
+        squareBtn.setOnAction(actionEvent -> selectShape("square", squareBtn));
+        triangleBtn.setOnAction(actionEvent -> selectShape("triangle", triangleBtn));
+        rectangleBtn.setOnAction(actionEvent -> selectShape("rectangle", rectangleBtn));
+        circleBtn.setOnAction(actionEvent -> selectShape("circle", circleBtn));
 
         setButtonScaling(squareBtn);
     }
@@ -54,9 +55,21 @@ public class SelectController {
         }
     }
 
-    public void selectShape(String figure) {
+    public void selectShape(String figure, Button selectedButton) {
         System.out.println("chosen figure = " + figure);
         chosenShape = figure;
+
+        if (activeShapeButton != null) {
+            resetButtonStyles(activeShapeButton);
+        }
+
+        activeShapeButton = selectedButton;
+
+        selectedButton.setStyle("-fx-background-color: #00ff00");
+    }
+
+    private void resetButtonStyles(Button button) {
+        button.setStyle("");
     }
 
     @FXML
