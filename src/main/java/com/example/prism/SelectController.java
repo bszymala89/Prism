@@ -1,5 +1,6 @@
 package com.example.prism;
 
+import com.example.prism.Utils.Alert;
 import com.example.prism.controllers.CalculateCircleVolumeController;
 import com.example.prism.controllers.CalculateRectangleVolumeController;
 import com.example.prism.controllers.CalculateSquareVolumeController;
@@ -65,7 +66,7 @@ public class SelectController {
 
         activeShapeButton = selectedButton;
 
-        selectedButton.setStyle("-fx-background-color: #00ff00");
+        selectedButton.setStyle("-fx-background-color: #02c205; -fx-opacity: 0.5");
     }
 
     private void resetButtonStyles(Button button) {
@@ -74,13 +75,13 @@ public class SelectController {
 
     @FXML
     protected void onNextBtnClick() throws IOException {
-        if (chosenShape.isEmpty()) {
-            System.out.println("Shape not chosen");
+        if (chosenShape == null) {
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Shape not chosen");
             return;
         }
 
         if (heightField.getText().isEmpty() || Double.parseDouble(heightField.getText().replace(",", ".")) <= 0) {
-            System.out.println("Invalid height. must be greater that 0");
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid height. must be greater that 0");
             return;
         }
 
@@ -106,13 +107,13 @@ public class SelectController {
                 controller = new CalculateCircleVolumeController(height);
                 break;
             default:
-                System.out.println("wrong shape");
+                Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Wrong Shape");
                 return;
         }
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
         fxmlLoader.setController(controller);
-        Scene scene = new Scene(fxmlLoader.load(), 550, 450);
+        Scene scene = new Scene(fxmlLoader.load(), 580, 450);
 
         Stage stage = new Stage();
         stage.setTitle("Hello!");

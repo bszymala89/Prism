@@ -1,5 +1,6 @@
 package com.example.prism.controllers;
 
+import com.example.prism.Utils.Alert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,7 +24,7 @@ public class CalculateSquareVolumeController {
     @FXML
     protected void Calculate() {
         if (sideField.getText().isEmpty() || Double.parseDouble(sideField.getText().replace(",", ".")) <= 0) {
-            System.out.println("Invalid side value. must be greater than 0");
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid side value. must be greater than 0");
             return;
         }
 

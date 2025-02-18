@@ -1,5 +1,6 @@
 package com.example.prism.controllers;
 
+import com.example.prism.Utils.Alert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,10 +22,12 @@ public class CalculateTriangleVolumeController {
     @FXML
     protected void Calculate() {
         if (sideField.getText().isEmpty() || Double.parseDouble(sideField.getText().replace(",", ".")) <= 0) {
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid side value. must be greater than 0");
             System.out.println("Invalid side value. must be greater than 0");
             return;
         }
         if (baseHeightField.getText().isEmpty() || Double.parseDouble(baseHeightField.getText().replace(",", ".")) <= 0) {
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid height value. must be greater than 0");
             System.out.println("Invalid height value. must be greater than 0");
             return;
         }
@@ -48,7 +51,7 @@ public class CalculateTriangleVolumeController {
 
         baseAreaLabel.setText("Base Area = " + side + " * " + baseHeight + " / 2 = " + baseAreaToDisplay + " cm² ");
         totalPrismAreaLabel.setText("Total Prism Area = (" + side + " * " + baseHeight + " / 2) * 2 + " +
-                triangleArmToDisplay + " * " + height + " * 2 = " + totalPrismAreaToDisplay + " cm²");
+                triangleArmToDisplay + " * " + height + " * 2 + " + side + " * " + height + " = " + totalPrismAreaToDisplay + " cm²");
         volumeLabel.setText("Volume = " + side + " * " + baseHeight + " / 2 * " + height + " = " + volumeToDisplay + " cm³");
         triangleArmLabel.setText("Triangle Arm = √((" + side + "/ 2)² + " + baseHeight + "²) =" + triangleArmToDisplay + " cm");
 

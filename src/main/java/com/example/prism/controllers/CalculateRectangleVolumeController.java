@@ -1,5 +1,6 @@
 package com.example.prism.controllers;
 
+import com.example.prism.Utils.Alert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,11 +22,11 @@ public class CalculateRectangleVolumeController {
     @FXML
     protected void Calculate() {
         if (sideAField.getText().isEmpty() || Double.parseDouble(sideAField.getText().replace(",", ".")) <= 0) {
-            System.out.println("Invalid side value. must be greater than 0");
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid sideA value. must be greater than 0");
             return;
         }
         if (sideBField.getText().isEmpty() || Double.parseDouble(sideBField.getText().replace(",", ".")) <= 0) {
-            System.out.println("Invalid side value. must be greater than 0");
+            Alert.showAlert(javafx.scene.control.Alert.AlertType.WARNING, "Invalid sideB value. must be greater than 0");
             return;
         }
 
