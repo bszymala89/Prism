@@ -14,4 +14,6 @@ module com.example.prism {
     exports com.example.prism;
     exports com.example.prism.controllers;
     opens com.example.prism.controllers to javafx.fxml;
+    exports com.example.prism.Utils;
+    opens com.example.prism.Utils to javafx.fxml;
 }
